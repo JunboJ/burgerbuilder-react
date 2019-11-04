@@ -1,0 +1,29 @@
+.Burger {
+    width: 100vw;
+    margin: auto;
+    height: 75vw;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+@media only screen and (min-width: 1000px) and (min-height: 700px) {
+    .Burger {
+        width: 50vw !important;
+        height: 37.5vw !important;
+    }
+}
+
+@media only screen and (min-width: 500px) and (min-height: 401px) {
+    .Burger {
+        width: 80vw;
+        height: 60vw;
+    }
+}
+
+@media only screen and (min-width: 400px) and (min-height: 500px) {
+    .Burger {
+        width: 80vw;
+        height: 60vw;
+    }
+}
