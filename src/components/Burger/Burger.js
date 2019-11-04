@@ -3,13 +3,25 @@ import classes from './Burger.module.css';
 import Ingredient from './Ingredient/Ingredient';
 
 const Burger = props => {
+    let ingredientList = Object.keys(props.ingredients).map(key => {
+        return [...Array(props.ingredients[key])].map((_, index) => {
+            return <Ingredient key={key + index} type={key} />
+        });
+    })
+    .reduce((prev, current) => {
+        return prev.concat(current);
+    }, []);
+
+    if (ingredientList.length === 0) {
+        ingredientList = <h1>Add ingredients from below!</h1>
+    }
+
     return (
         <div className={classes.Burger}>
             <Ingredient type="bread-top"/>
-            <Ingredient type="cheese"/>
-            <Ingredient type="bacon"/>
-            <Ingredient type="meat"/>
+            {ingredientList}
             <Ingredient type="bread-bottom"/>
+            
         </div>
     );
 }

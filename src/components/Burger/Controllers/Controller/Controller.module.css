@@ -1,0 +1,12 @@
+.controllerGroupItem {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    border: none;
+}
+
+.controllerLabels {
+    height: 2rem; 
+    line-height: 2rem;
+    margin-bottom: 0;
+}

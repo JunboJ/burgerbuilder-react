@@ -1,0 +1,18 @@
+.Controllers {
+    width: 90%;
+    margin: auto;
+    padding: 1rem, 3rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    box-shadow: 2px 2px 4px #c5c5c5;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+}
+
+.controllerGroup {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
