@@ -29,12 +29,12 @@ class Builder extends Component {
         totalPrice: 450
     }
 
-    
-    
+
+
     addIngredientHandler = type => {
         let oldState = this.state.ingredients[type];
         const updatedState = { ...this.state.ingredients };
-        updatedState[type] = oldState+1;
+        updatedState[type] = oldState + 1;
         const oldPrice = this.state.totalPrice;
         const newPrice = oldPrice + INGREDIENT_PRICE[type];
         console.log(INGREDIENT_PRICE[type]);
@@ -48,7 +48,7 @@ class Builder extends Component {
         let oldState = this.state.ingredients[type];
         if (oldState > 0) {
             const updatedState = { ...this.state.ingredients };
-            updatedState[type] = oldState-1;
+            updatedState[type] = oldState - 1;
             const oldPrice = this.state.totalPrice;
             const newPrice = oldPrice - INGREDIENT_PRICE[type];
             this.setState({
@@ -57,6 +57,7 @@ class Builder extends Component {
             });
         }
     }
+
 
     render() {
         return (
@@ -69,6 +70,7 @@ class Builder extends Component {
                     }}>
                     <Controllers
                         allIngredients={this.state.allIngredients}
+                        ingredients={this.state.ingredients}
                     />
                 </EditIngredientContext.Provider>
             </Aux>

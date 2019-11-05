@@ -7,11 +7,13 @@ const Controllers = props => {
     let ulClassNames = ulClassNamesArr.join(" ");
 
     const controllers = props.allIngredients.map((ingredient, i) => {
+        
         return (
             <Controller
                 key={ingredient.label}
                 label={ingredient.label}
                 type={ingredient.type}
+                disable={props.ingredients[ingredient.type] === 0}
             />
         )
     })

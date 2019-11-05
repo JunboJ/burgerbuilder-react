@@ -7,17 +7,20 @@ const Controller = props => {
     let liClassNames = liClassNamesArr.join(" ");
 
     const editIngredientContext = useContext(EditIngredientContext);
-console.log(props.type);
-
     return (
-            <li className={liClassNames}>
-                <label className={classes.controllerLabels}>{props.label}</label>
-                <div className="btn-group">
-                    <button onClick={() => {editIngredientContext.remove(props.type)}} className="btn btn-light">-</button>
-                    {/* <div><p>7070</p></div> */}
-                    <button onClick={() => {editIngredientContext.add(props.type)}} className="btn btn-light">+</button>
-                </div>
-            </li>
+        <li className={liClassNames}>
+            <label className={classes.controllerLabels}>{props.label}</label>
+            <div className="btn-group">
+                <button
+                    onClick={() => { editIngredientContext.remove(props.type) }}
+                    disabled={props.disable}
+                    className="btn btn-light">-</button>
+                {/* <div><p>7070</p></div> */}
+                <button
+                    onClick={() => { editIngredientContext.add(props.type) }}
+                    className="btn btn-light">+</button>
+            </div>
+        </li>
     );
 }
 export default Controller;
