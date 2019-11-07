@@ -16,7 +16,7 @@ class Builder extends Component {
     state = {
         ingredients: {
             salad: 0,
-            bacon: 1,
+            bacon: 0,
             meat: 0,
             cheese: 0
         },

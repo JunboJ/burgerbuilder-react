@@ -6,13 +6,15 @@ const Controllers = props => {
     let ulClassNamesArr = ["list-group", classes.controllerGroup];
     let ulClassNames = ulClassNamesArr.join(" ");
 
-    const totalIngredientsArr = [];
-    Object.keys(props.ingredients).map((key) => {
-        totalIngredientsArr.push(props.ingredients[key]);
-    });
-    const totalIngredientAmount = totalIngredientsArr.reduce((prev, curr) => {
+    // const totalIngredientsArr = [];
+    const totalIngredientAmount = Object.keys(props.ingredients).map((key) => {
+        return props.ingredients[key];
+    }).reduce((prev, curr) => {
         return prev + curr;
     }, 0);
+    // const totalIngredientAmount = totalIngredientsArr.reduce((prev, curr) => {
+    //     return prev + curr;
+    // }, 0);
 
 
 
