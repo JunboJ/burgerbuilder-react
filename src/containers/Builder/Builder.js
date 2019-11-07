@@ -71,6 +71,7 @@ class Builder extends Component {
                     <Controllers
                         allIngredients={this.state.allIngredients}
                         ingredients={this.state.ingredients}
+                        price={this.state.totalPrice}
                     />
                 </EditIngredientContext.Provider>
             </Aux>

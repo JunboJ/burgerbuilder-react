@@ -10,6 +10,7 @@ const Controller = props => {
     return (
         <li className={liClassNames}>
             <label className={classes.controllerLabels}>{props.label}</label>
+            <label></label>
             <div className="btn-group">
                 <button
                     onClick={() => { editIngredientContext.remove(props.type) }}

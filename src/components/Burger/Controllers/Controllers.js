@@ -6,8 +6,17 @@ const Controllers = props => {
     let ulClassNamesArr = ["list-group", classes.controllerGroup];
     let ulClassNames = ulClassNamesArr.join(" ");
 
+    const totalIngredientsArr = [];
+    Object.keys(props.ingredients).map((key) => {
+        totalIngredientsArr.push(props.ingredients[key]);
+    });
+    const totalIngredientAmount = totalIngredientsArr.reduce((prev, curr) => {
+        return prev + curr;
+    }, 0);
+
+
+
     const controllers = props.allIngredients.map((ingredient, i) => {
-        
         return (
             <Controller
                 key={ingredient.label}
@@ -23,6 +32,15 @@ const Controllers = props => {
             <ul className={ulClassNames}>
                 {controllers}
             </ul>
+            <h4 className={classes.TotalPrice}>Total Price: {((props.price) / 100).toFixed(2)}$</h4>
+            <button
+                disabled={totalIngredientAmount === 0}
+                className={`btn btn-warning ${classes.CheckOut}`}
+            >{`Check Out  `}
+                <span className={classes.CheckOutChecked}>
+                    <i className="fas fa-check"></i>
+                </span>
+            </button>
         </div>
     );
 }
