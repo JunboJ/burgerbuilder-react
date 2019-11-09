@@ -4,6 +4,8 @@ import Aux from '../../hoc/Auxiliary';
 import Burger from '../../components/Burger/Burger';
 import Controllers from '../../components/Burger/Controllers/Controllers';
 import EditIngredientContext from '../../context/editIngredient-context';
+import Modal from '../../components/UI/Modal/Modal';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICE = {
     salad: 50,
@@ -62,6 +64,9 @@ class Builder extends Component {
     render() {
         return (
             <Aux>
+                <Modal>
+                    <OrderSummary ingredients={this.state.ingredients} totalPrice={this.state.totalPrice}/>
+                </Modal>
                 <Burger ingredients={this.state.ingredients} />
                 <EditIngredientContext.Provider
                     value={{

@@ -37,12 +37,16 @@ const Controllers = props => {
             <h4 className={classes.TotalPrice}>Total Price: {((props.price) / 100).toFixed(2)}$</h4>
             <button
                 disabled={totalIngredientAmount === 0}
-                className={`btn btn-warning ${classes.CheckOut}`}
+                className={`btn btn-warning btn btn-primary ${classes.CheckOut}`}
+                type="button"
+                data-toggle="modal" 
+                data-target="#orderSummaryModal"
             >{`Check Out  `}
                 <span className={classes.CheckOutChecked}>
                     <i className="fas fa-check"></i>
                 </span>
             </button>
+
         </div>
     );
 }
