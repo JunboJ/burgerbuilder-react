@@ -64,9 +64,7 @@ class Builder extends Component {
     render() {
         return (
             <Aux>
-                <Modal>
-                    <OrderSummary ingredients={this.state.ingredients} totalPrice={this.state.totalPrice}/>
-                </Modal>
+                <OrderSummary ingredients={this.state.ingredients} totalPrice={this.state.totalPrice} />
                 <Burger ingredients={this.state.ingredients} />
                 <EditIngredientContext.Provider
                     value={{
