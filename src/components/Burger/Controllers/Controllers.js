@@ -42,7 +42,7 @@ const Controllers = props => {
                 data-toggle="modal" 
                 data-target="#orderSummaryModal"
             >{`Check Out  `}
-                <span className={classes.CheckOutChecked}>
+                <span className={totalIngredientAmount === 0 ? classes.CheckOutUnchecked : classes.CheckOutChecked}>
                     <i className="fas fa-check"></i>
                 </span>
             </button>

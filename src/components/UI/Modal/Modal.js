@@ -20,7 +20,7 @@ const modalBody = props.paid ? <div><p>{props.body}</p></div> : <div><p>{props.b
                         {modalBody}
                     </div>
                     <div className='modal-footer'>
-                        <PrimaryBtn clicked={props.clicked} disabled={props.disabled}>{props.primaryBtnName}</PrimaryBtn>
+                        <PrimaryBtn clicked={props.primaryClicked} disabled={props.disabled}>{props.primaryBtnName}</PrimaryBtn>
                     </div>
                 </div>
             </div>

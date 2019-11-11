@@ -16,7 +16,6 @@ const Controller = props => {
                     onClick={() => { editIngredientContext.remove(props.type) }}
                     disabled={props.disable}
                     className="btn btn-light">-</button>
-                {/* <div><p>7070</p></div> */}
                 <button
                     onClick={() => { editIngredientContext.add(props.type) }}
                     className="btn btn-light">+</button>

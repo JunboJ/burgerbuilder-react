@@ -6,8 +6,7 @@ const OrderSummary = props => {
     const ingredientsListItems = Object.keys(ingredientsSummary).map((key) => {
         return (
             <li>
-                <p>{key}</p>
-                <p>Amount: {props.ingredients[key]}</p>
+                <p>{key} &times;{props.ingredients[key]}</p>
             </li>
         )
     });
@@ -26,11 +25,6 @@ const OrderSummary = props => {
         paid: false
     });
 
-    const [btnState, setBtnState] = useState({
-        primaryBtnName: 'Check Out',
-        secondaryBtnName: 'Cancel'
-    })
-
     const [orderSummaryState, setOrderSummaryState] = useState({
         modalTitle: 'Order Summary',
         modalBodyMessage: 'Here are the ingredients you added: '
@@ -41,11 +35,18 @@ const OrderSummary = props => {
             paid={paidState.paid}
             title={orderSummaryState.modalTitle}
             body={orderSummaryState.modalBodyMessage}
-            clicked={checkOutHandler}
-            disabled={paidState.paid}
-            primaryBtnName={btnState.primaryBtnName}
-            secondaryBtnName={btnState.secondaryBtnName}
-        >{ingredientsListItems}</Modal>
+            primaryClicked={checkOutHandler}
+            primaryDisabled={paidState.paid}
+            primaryBtnName='Continue'
+            secondaryBtnName='Cancel'
+        >
+            {ingredientsListItems}
+            <div>
+                <p>
+                    <b>Total Price:</b> {`${(props.totalPrice/100).toFixed(2)}$`}
+                </p>
+            </div>
+        </Modal>
     );
 }
 export default OrderSummary;

@@ -1,0 +1,16 @@
+.LogoWrapper {
+    height: 100%;
+    padding: 0;
+}
+
+.LogoIcon {
+    height: 100%;
+}
+
+.slogan {
+    font-size: 0.5rem;
+    position: absolute;
+    text-align: center;
+    left: 42px;
+    top: 65px;
+}

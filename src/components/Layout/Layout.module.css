@@ -1,3 +1,17 @@
 .Content {
     margin-top: 1rem;
+    flex: 1 0 auto;
+}
+
+.Footer {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+}
+
+.Footer p {
+    position: relative;
+    margin: 1rem auto 0;
+    color: gray;
+    font-size: 0.6rem;
 }

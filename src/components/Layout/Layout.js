@@ -2,16 +2,20 @@ import React from 'react';
 
 import Aux from '../../hoc/Auxiliary';
 import classes from './Layout.module.css';
+import NavBar from '../Nav/NavBar/NavBar';
 
 const Layout = props => {
     return (
         <Aux>
-            <div style={{ flexBasis: '100%' }}>
-                navBar, sideBar, backdrop
-            </div>
+            <header className={classes.Header} style={{ diaplay: 'flex', flexBasis: '100%' }}>
+                <NavBar />
+            </header>
             <main className={classes.Content}>
                 {props.children}
             </main>
+            <footer className={classes.Footer}>
+                <p>- You have reached the bottom -</p>
+            </footer>
         </Aux>
     );
 };
