@@ -5,7 +5,7 @@ const NavBarItem = props => {
     
     return (
         <div className={classes.NavBarItem}>
-            <a style={{ color: '#6b2b00'}} href={props.link}>{props.children}</a>
+            <a style={{ color: '#6b2b00'}} className={classes.anchor} href={props.link}>{props.children}</a>
         </div>
     );
 }

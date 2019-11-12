@@ -11,7 +11,7 @@ const NavBar = props => {
                 <Logo slogan="Build Yourself"/>
             </div>
             <nav className={classes.NavItemsWrapper}>
-                <NavBarItem>Burger</NavBarItem>
+                <NavBarItem link='/'>Burger</NavBarItem>
             </nav>
         </div>
     );
