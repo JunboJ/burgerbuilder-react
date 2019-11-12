@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './NavBar.module.css';
 import Logo from '../../UI/Logo/Logo';
+import NavBarItem from './NavBarItem/NavBarItem';
 
 const NavBar = props => {
     
@@ -9,10 +10,8 @@ const NavBar = props => {
             <div>
                 <Logo slogan="Build Yourself"/>
             </div>
-            <nav>
-                <div>
-                    Bergur
-                </div>
+            <nav className={classes.NavItemsWrapper}>
+                <NavBarItem>Burger</NavBarItem>
             </nav>
         </div>
     );

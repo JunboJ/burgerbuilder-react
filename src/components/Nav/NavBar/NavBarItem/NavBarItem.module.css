@@ -1,0 +1,19 @@
+.NavBarItem:active {
+    box-shadow: inset 3px 3px 2px #e0844f;
+    border-radius: 2px;
+    background-color: #f7b263;
+    text-decoration: none;
+}
+
+.NavBarItem {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    height: 100%;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.NavBarItem:hover {
+    cursor: pointer;
+}
