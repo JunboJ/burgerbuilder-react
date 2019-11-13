@@ -1,4 +1,4 @@
-.SideBarWrapper {
+.SideBarWrapper_show {
     display: flex;
     flex-flow: column;
     position: fixed;
@@ -8,7 +8,11 @@
     height: 100vh;
     padding: 2rem;
     background-color: #24201e;
-    z-index: 200;
+    z-index: 400;
+}
+
+.SideBarWrapper_hide {
+    display: none;
 }
 
 .SideBarLogoWrapper {

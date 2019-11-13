@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Radium from 'radium';
 import classes from './NavBar.module.css';
 import Logo from '../../UI/Logo/Logo';
 import NavBarItem from './NavBarItem/NavBarItem';
 
 const NavBar = props => {
-
+    const logoBtn = props.showSideBar ? <div><p style={{ fontSize: '1.8rem', textAlign: 'center', color: 'white'}}>&times;</p></div> : <Logo slogan="Build Yourself" />;
     return (
         <div className={classes.NavBar}>
-            <div>
-                <Logo slogan="Build Yourself" />
+            <div onClick={props.logoClicked} className={classes.logoBtnBehaviour}>
+                {logoBtn}
             </div>
             <nav className={classes.NavItemsWrapper}>
                 <NavBarItem link='/'>Burger</NavBarItem>
@@ -19,4 +20,4 @@ const NavBar = props => {
         </div>
     );
 }
-export default NavBar;
+export default Radium(NavBar);

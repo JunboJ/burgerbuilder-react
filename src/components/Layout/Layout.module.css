@@ -1,5 +1,9 @@
-.main {
+.main_showSideBar {
     margin-left: 250px;
+}
+
+.main_hideSideBar {
+    margin-left: 0;
 }
 
 .Header {

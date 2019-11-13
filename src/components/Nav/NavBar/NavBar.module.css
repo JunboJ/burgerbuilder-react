@@ -15,6 +15,16 @@
     height: 100%;
 }
 
+.logoBtnBehaviour {
+    cursor: pointer;
+    z-index: 400;
+}
+
+.sideBarCloseBtn {
+    font-size: 4rem;
+    text-align: center;
+}
+
 .LoginBtn {
     display: flex;
     flex-direction: column;
