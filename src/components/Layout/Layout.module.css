@@ -1,9 +1,15 @@
 .main_showSideBar {
     margin-left: 250px;
+    animation: openSideBar 0.2s forwards;
 }
 
 .main_hideSideBar {
     margin-left: 0;
+}
+
+@keyframes openSideBar {
+    from {margin-left: 0px;}
+    to {margin-left: 250px;}
 }
 
 .Header {

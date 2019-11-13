@@ -9,6 +9,7 @@
     padding: 2rem;
     background-color: #24201e;
     z-index: 400;
+    animation: openSideBar 0.2s forwards;
 }
 
 .SideBarWrapper_hide {
@@ -20,4 +21,14 @@
     padding: 0;
     margin: 0;
     text-align: center;
+}
+
+@keyframes openSideBar {
+    from {width: 0px;}
+    to {width: 250px;}
+}
+
+@keyframes closeSideBar {
+    from {width: 250px;}
+    to {width: 0px;}
 }

@@ -15,7 +15,7 @@ const NavBar = props => {
                 <NavBarItem link='/'>Burger</NavBarItem>
             </nav>
             <span className={classes.LoginBtn}>
-                <i class="far fa-user fa-1x"></i>
+                <i class="far fa-user"></i>
             </span>
         </div>
     );
