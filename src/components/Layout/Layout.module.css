@@ -1,9 +1,19 @@
+.main {
+    margin-left: 250px;
+}
+
+.Header {
+    width: 100vw;
+}
+
 .Content {
+    width: 100vw;
     margin-top: 1rem;
     flex: 1 0 auto;
 }
 
 .Footer {
+    width: 100vw;
     display: flex;
     flex-shrink: 0;
     justify-content: center;

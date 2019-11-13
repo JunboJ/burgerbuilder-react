@@ -5,6 +5,7 @@
     border-radius: 1rem;
     box-shadow: 2px 2px 3px burlywood;
     margin: 2rem 1rem;
+    padding-left: 1rem;
     height: 3rem;
 }
 
@@ -12,4 +13,21 @@
     margin: auto 2rem;
     text-align: center;
     height: 100%;
+}
+
+.LoginBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    width: 50px;
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+@media only screen and ( max-width: 450px ) {
+    .NavItemsWrapper {
+        display: none;
+    }
 }

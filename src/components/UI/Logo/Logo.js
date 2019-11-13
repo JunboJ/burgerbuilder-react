@@ -7,7 +7,7 @@ const Logo = props => {
     return (
         <div className={classes.LogoWrapper}>
             <img className={classes.LogoIcon} src={LogoPic}></img>
-            <p className={classes.slogan}>{props.slogan}</p>
+            {/* <p className={classes.slogan}>{props.slogan}</p> */}
         </div>
     );
 }
