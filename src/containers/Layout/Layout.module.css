@@ -5,11 +5,17 @@
 
 .main_hideSideBar {
     margin-left: 0;
+    /* animation: closeSideBar 0.2s forwards; */
 }
 
 @keyframes openSideBar {
     from {margin-left: 0px;}
     to {margin-left: 250px;}
+}
+
+@keyframes closeSideBar {
+    from {margin-left: 250px;}
+    to {margin-left: 0px;}
 }
 
 .Header {

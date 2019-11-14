@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import Aux from '../../hoc/Auxiliary';
 import classes from './Layout.module.css';
-import NavBar from '../Nav/NavBar/NavBar';
-import SideBar from '../Nav/SideBar/SideBar';
+import NavBar from '../../components/Nav/NavBar/NavBar';
+import SideBar from '../../components/Nav/SideBar/SideBar';
 
 const Layout = props => {
     const [showSideBarState, setShowSideBarState] = useState({
@@ -21,7 +21,7 @@ const Layout = props => {
     return (
         <div className={mainClass}>
             <header className={classes.Header} style={{ diaplay: 'flex', flexBasis: '100%' }}>
-                <SideBar show={showSideBarState.showSideBar}/>
+                <SideBar show={showSideBarState.showSideBar} clicked={toggleSideBar}/>
                 <NavBar showSideBar={showSideBarState.showSideBar} logoClicked={toggleSideBar}/>
             </header>
             <main className={classes.Content}>

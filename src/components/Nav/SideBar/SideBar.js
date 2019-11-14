@@ -11,7 +11,7 @@ const SideBar = props => {
 
     return (
         <Aux>
-            <Backdrop show={props.show} />
+            <Backdrop show={props.show} clicked={props.clicked} />
             <div className={sideBarClass}>
                 <div className={classes.SideBarLogoWrapper}>
                     <LogoIcon ></LogoIcon>

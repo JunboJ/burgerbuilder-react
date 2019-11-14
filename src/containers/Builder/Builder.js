@@ -28,10 +28,15 @@ class Builder extends Component {
             { label: 'Salad', type: 'salad' },
             { label: 'Bacon', type: 'bacon' }
         ],
-        totalPrice: 450
+        totalPrice: 450,
+        showModal: false
     }
 
-
+    toggleModal = () => {
+        this.setState({
+            showModal: !this.state.showModal
+        })
+    }
 
     addIngredientHandler = type => {
         let oldState = this.state.ingredients[type];
@@ -64,7 +69,7 @@ class Builder extends Component {
     render() {
         return (
             <Aux>
-                <OrderSummary ingredients={this.state.ingredients} totalPrice={this.state.totalPrice} />
+                <OrderSummary checkOutClicked={this.toggleModal} showModal={this.state.showModal} ingredients={this.state.ingredients} totalPrice={this.state.totalPrice} />
                 <Burger ingredients={this.state.ingredients} />
                 <EditIngredientContext.Provider
                     value={{
@@ -75,6 +80,7 @@ class Builder extends Component {
                         allIngredients={this.state.allIngredients}
                         ingredients={this.state.ingredients}
                         price={this.state.totalPrice}
+                        checkOutClicked={this.toggleModal}
                     />
                 </EditIngredientContext.Provider>
             </Aux>

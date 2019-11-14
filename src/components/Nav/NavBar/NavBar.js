@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Radium from 'radium';
 import classes from './NavBar.module.css';
 import Logo from '../../UI/Logo/Logo';
@@ -15,7 +15,7 @@ const NavBar = props => {
                 <NavBarItem link='/'>Burger</NavBarItem>
             </nav>
             <span className={classes.LoginBtn}>
-                <i class="far fa-user"></i>
+                <i className="far fa-user"></i>
             </span>
         </div>
     );

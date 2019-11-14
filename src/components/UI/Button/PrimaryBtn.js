@@ -1,11 +1,12 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 
 const PrimaryBtn = props => {
     
     return (
-        <button onClick={props.clicked} className={`btn btn-primary`} disabled={props.disabled}>
+        <Button onClick={props.clicked} variant="primary" disabled={props.disabled}>
             {props.children}
-        </button>
+        </Button>
     );
 }
 export default PrimaryBtn;

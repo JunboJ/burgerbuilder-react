@@ -39,14 +39,12 @@ const Controllers = props => {
                 disabled={totalIngredientAmount === 0}
                 className={`btn btn-warning btn btn-primary ${classes.CheckOut}`}
                 type="button"
-                data-toggle="modal" 
-                data-target="#orderSummaryModal"
+                onClick={props.checkOutClicked}
             >{`Check Out  `}
                 <span className={totalIngredientAmount === 0 ? classes.CheckOutUnchecked : classes.CheckOutChecked}>
                     <i className="fas fa-check"></i>
                 </span>
             </button>
-
         </div>
     );
 }
