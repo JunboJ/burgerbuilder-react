@@ -10,6 +10,7 @@
     top: 30%;
     box-sizing: border-box;
     transition: all 0.3 ease-out;
+    overflow: hidden;
 }
 
 @media only screen and (min-width: 600px) {

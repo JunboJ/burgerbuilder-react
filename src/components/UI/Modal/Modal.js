@@ -2,14 +2,17 @@ import React, { useEffect } from 'react';
 import classes from './Modal.module.css';
 import PrimaryBtn from '../../UI/Button/PrimaryBtn';
 import { Modal, Button } from 'react-bootstrap';
-
+import Spinner from '../../UI/Spinner/Spinner';
 
 const ModalComponent = props => {
     useEffect(() => {
         console.log('modal updated');
     })
 
-    const modalBody = props.paid ? <div><p>{props.body}</p></div> : <div><p>{props.body}</p><ul>{props.children}</ul></div>;
+    let buttonText = props.primaryBtnName
+    if (props.loading) {
+        buttonText = <Spinner />;
+    }
 
     return (
         <Modal show={props.show} onHide={props.checkOutClicked} centered >
@@ -17,10 +20,10 @@ const ModalComponent = props => {
                 <Modal.Title>{props.title}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {modalBody}
+                <div><p>{props.body}</p><ul>{props.children}</ul></div>
             </Modal.Body>
             <Modal.Footer>
-                <PrimaryBtn clicked={props.primaryClicked} disabled={props.disabled}>{props.primaryBtnName}</PrimaryBtn>
+                <PrimaryBtn clicked={props.primaryClicked} disabled={props.primaryDisabled}>{buttonText}</PrimaryBtn>
             </Modal.Footer>
         </Modal>
     );

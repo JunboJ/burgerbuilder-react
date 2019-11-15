@@ -13,6 +13,7 @@ const NavBar = props => {
             </div>
             <nav className={classes.NavItemsWrapper}>
                 <NavBarItem link='/'>Burger</NavBarItem>
+                <NavBarItem link='/'>Orders</NavBarItem>
             </nav>
             <span className={classes.LoginBtn}>
                 <i className="far fa-user"></i>
