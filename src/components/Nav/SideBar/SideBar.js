@@ -4,7 +4,7 @@ import classes from './SideBar.module.css';
 import LogoIcon from '../../UI/Logo/Logo';
 import NavBarItem from '../NavBar/NavBarItem/NavBarItem';
 import Backdrop from '../../UI/Backdrop/Bakcdrop';
-import Aux from '../../../hoc/Auxiliary';
+import Aux from '../../../hoc/Auxiliary/Auxiliary';
 
 const SideBar = props => {
     const sideBarClass = props.show ? classes.SideBarWrapper_show : classes.SideBarWrapper_hide

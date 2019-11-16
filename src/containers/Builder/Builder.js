@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
-import Aux from '../../hoc/Auxiliary';
+import Aux from '../../hoc/Auxiliary/Auxiliary';
 import Burger from '../../components/Burger/Burger';
 import Controllers from '../../components/Burger/Controllers/Controllers';
 import EditIngredientContext from '../../context/editIngredient-context';
-import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+import errorHandler from '../../hoc/errorHandler/errorHandler';
+import axios from '../../axios_orders';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 const INGREDIENT_PRICE = {
     salad: 50,
@@ -16,21 +18,31 @@ const INGREDIENT_PRICE = {
 
 class Builder extends Component {
     state = {
-        ingredients: {
-            salad: 0,
-            bacon: 0,
-            meat: 0,
-            cheese: 0
-        },
-        allIngredients: [
-            { label: 'Meat', type: 'meat' },
-            { label: 'Cheese', type: 'cheese' },
-            { label: 'Salad', type: 'salad' },
-            { label: 'Bacon', type: 'bacon' }
-        ],
+        ingredients: null,
+        allIngredients: null,
         totalPrice: 450,
         showModal: false
     }
+
+    componentDidMount = () => {
+        axios.get('/ingredients.json')
+            .then(res => {
+                const allIgList = {};
+                const igList = {};
+                const data = {...res.data};
+                Object.keys(data).map(key => {
+                    allIgList[key] = data[key];
+                    igList[data[key].type] = 0;
+                });
+                console.log(igList);
+                this.setState({
+                    ingredients: { ...igList },
+                    allIngredients: { ...allIgList }
+                });
+            })
+            .catch(err => err ? console.log(err) : null);
+    };
+
 
     toggleModal = () => {
         this.setState({
@@ -66,10 +78,16 @@ class Builder extends Component {
     }
 
     render() {
+        let burger = <Spinner ver='gray'/>;
+
+        if (this.state.ingredients) {
+            burger = <Burger ingredients={this.state.ingredients} />
+        }
+
         return (
             <Aux>
-                <OrderSummary checkOutClicked={this.toggleModal} showModal={this.state.showModal} ingredients={this.state.ingredients} totalPrice={this.state.totalPrice} />
-                <Burger ingredients={this.state.ingredients} />
+                <OrderSummary closeBtnClicked={this.toggleModal} showModal={this.state.showModal} ingredients={this.state.ingredients} totalPrice={this.state.totalPrice} />
+                {burger}
                 <EditIngredientContext.Provider
                     value={{
                         add: this.addIngredientHandler,
@@ -87,4 +105,4 @@ class Builder extends Component {
     }
 };
 
-export default Builder;
+export default errorHandler(Builder, axios);

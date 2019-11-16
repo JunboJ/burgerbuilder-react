@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import Aux from '../../hoc/Auxiliary';
 import classes from './Layout.module.css';
 import NavBar from '../../components/Nav/NavBar/NavBar';
 import SideBar from '../../components/Nav/SideBar/SideBar';

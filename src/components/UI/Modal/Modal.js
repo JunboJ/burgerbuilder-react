@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import classes from './Modal.module.css';
 import PrimaryBtn from '../../UI/Button/PrimaryBtn';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import Spinner from '../../UI/Spinner/Spinner';
 
 const ModalComponent = props => {
@@ -11,11 +10,11 @@ const ModalComponent = props => {
 
     let buttonText = props.primaryBtnName
     if (props.loading) {
-        buttonText = <Spinner />;
+        buttonText = <Spinner ver='white' />;
     }
 
     return (
-        <Modal show={props.show} onHide={props.checkOutClicked} centered >
+        <Modal show={props.show} onHide={props.closeBtnClicked} centered >
             <Modal.Header closeButton>
                 <Modal.Title>{props.title}</Modal.Title>
             </Modal.Header>
@@ -23,7 +22,7 @@ const ModalComponent = props => {
                 <div><p>{props.body}</p><ul>{props.children}</ul></div>
             </Modal.Body>
             <Modal.Footer>
-                <PrimaryBtn clicked={props.primaryClicked} disabled={props.primaryDisabled}>{buttonText}</PrimaryBtn>
+                <PrimaryBtn clicked={props.primaryClicked} disabled={props.primaryDisabled ? props.primaryDisabled : false}>{buttonText}</PrimaryBtn>
             </Modal.Footer>
         </Modal>
     );

@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { Component } from 'react';
 import Modal from '../../UI/Modal/Modal';
 import axios from '../../../axios_orders';
 
@@ -34,7 +34,7 @@ class OrderSummary extends Component {
                 this.setState({
                     loading: false,
                 });
-                this.props.checkOutClicked();
+                this.props.closeBtnClicked();
             })
             .catch(err => {
                 this.setState({
@@ -77,7 +77,7 @@ class OrderSummary extends Component {
                 primaryBtnName='Continue'
                 show={this.props.showModal}
                 primaryDisabled={this.props.paid}
-                checkOutClicked={this.props.checkOutClicked}
+                closeBtnClicked={this.props.closeBtnClicked}
                 loading={this.state.loading}
             >
                 {ingredientsListItems}
