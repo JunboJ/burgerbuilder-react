@@ -15,13 +15,20 @@ const ErrorHandler = (WrappedComponent, axios) => {
             });
         };
 
-        componentDidMount() {
-            axios.interceptors.response.use(res => res, err => {
+        constructor() {
+            super();
+            this.resInterceptor = axios.interceptors.response.use(res => res, err => {
                 this.setState({
                     error: err.message
                 });
             });
-            axios.interceptors.request.use(req => req);
+            this.reqInterceptor = axios.interceptors.request.use(req => req);
+        }
+
+        componentWillUnmount() {
+            // console.log('unmount', this.reqInterceptor, this.resInterceptor);
+            axios.interceptors.request.eject(this.reqInterceptor);
+            axios.interceptors.response.eject(this.resInterceptor);
         }
 
         render() {
