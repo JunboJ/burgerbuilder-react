@@ -21,7 +21,8 @@ class Builder extends Component {
         ingredients: null,
         allIngredients: null,
         totalPrice: 450,
-        showModal: false
+        showModal: false,
+        purchasing: false
     }
 
     componentDidMount = () => {
@@ -29,7 +30,7 @@ class Builder extends Component {
             .then(res => {
                 const allIgList = {};
                 const igList = {};
-                const data = {...res.data};
+                const data = { ...res.data };
                 Object.keys(data).map(key => {
                     allIgList[key] = data[key];
                     igList[data[key].type] = 0;
@@ -47,7 +48,12 @@ class Builder extends Component {
     toggleModal = () => {
         this.setState({
             showModal: !this.state.showModal
-        })
+        });
+        if (this.state.purchasing) {
+            this.purchaseCancelHandler();
+        } else {
+            this.purchaseHandler();
+        }
     }
 
     addIngredientHandler = type => {
@@ -77,8 +83,20 @@ class Builder extends Component {
         }
     }
 
+    purchaseHandler = () => {
+        this.setState({
+            purchasing: true
+        });
+    }
+
+    purchaseCancelHandler = () => {
+        this.setState({
+            purchasing: false
+        });
+    }
+
     render() {
-        let burger = <Spinner ver='gray'/>;
+        let burger = <Spinner ver='gray' />;
 
         if (this.state.ingredients) {
             burger = <Burger ingredients={this.state.ingredients} />

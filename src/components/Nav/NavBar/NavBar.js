@@ -1,5 +1,4 @@
 import React from 'react';
-import Radium from 'radium';
 import classes from './NavBar.module.css';
 import Logo from '../../UI/Logo/Logo';
 import NavBarItem from './NavBarItem/NavBarItem';
@@ -21,4 +20,4 @@ const NavBar = props => {
         </div>
     );
 }
-export default Radium(NavBar);
+export default NavBar;
