@@ -2,7 +2,8 @@ import React from 'react';
 
 const editIngredientContext = React.createContext({
     add: () => {},
-    remove: () => {}
+    remove: () => {},
+    ingredients: null
 });
 
 export default editIngredientContext;

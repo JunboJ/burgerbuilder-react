@@ -67,7 +67,7 @@ class Builder extends Component {
             ingredients: updatedState,
             totalPrice: newPrice
         });
-    }
+    };
 
     removeIngredientHandler = type => {
         let oldState = this.state.ingredients[type];
@@ -99,7 +99,15 @@ class Builder extends Component {
         let burger = <Spinner ver='gray' />;
 
         if (this.state.ingredients) {
-            burger = <Burger ingredients={this.state.ingredients} />
+            burger = (
+                <EditIngredientContext.Provider
+                    value={{
+                        ingredients: this.state.ingredients
+                    }}
+                >
+                    <Burger />
+                </EditIngredientContext.Provider>
+            );
         }
 
         return (
