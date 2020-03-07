@@ -15,6 +15,7 @@ const CheckoutSum = props => {
             meat: 1
         }
     });
+    const history = useHistory();
     console.log(ingState, props);
     return (
         <div className={classes.CheckoutSum_wrapper}>
@@ -24,7 +25,7 @@ const CheckoutSum = props => {
             </div>
             <div className={classes.BtnSet_wrapper}>
                 <div className={classes.BtnSet}>
-                    <PrimaryBtn type='light' disabled={false} clicked={() => useHistory().goBack()} >Cancel</PrimaryBtn>
+                    <PrimaryBtn type='light' disabled={false} clicked={history.goBack} >Cancel</PrimaryBtn>
                     <PrimaryBtn type='success' disabled={false} clicked={null} >Purchase</PrimaryBtn>
                 </div>
             </div>

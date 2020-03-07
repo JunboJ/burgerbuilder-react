@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 
 import Layout from './containers/Layout/Layout';
 import Builder from './containers/Builder/Builder';
@@ -12,8 +12,11 @@ function App() {
 		<BrowserRouter>
 			<div className={classes.App}>
 				<Layout>
-					<Route path="/" exact component={Builder} />
-					<Route path="/checkout" component={Checkout} />
+					<Switch>
+						<Route path="/" exact component={Builder} />
+						<Route path="/checkout" component={Checkout} />
+						<Redirect from="/burgerbuilder-react" to="/" />
+					</Switch>
 				</Layout>
 			</div>
 		</BrowserRouter>
