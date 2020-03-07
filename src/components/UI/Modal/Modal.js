@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
-import PrimaryBtn from '../../UI/Button/PrimaryBtn';
 import { Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
+import PrimaryBtn from '../../UI/Button/PrimaryBtn';
 import Spinner from '../../UI/Spinner/Spinner';
 
 const ModalComponent = props => {
@@ -22,7 +24,7 @@ const ModalComponent = props => {
                 <div><p>{props.body}</p><ul>{props.children}</ul></div>
             </Modal.Body>
             <Modal.Footer>
-                <PrimaryBtn clicked={props.primaryClicked} disabled={props.primaryDisabled ? props.primaryDisabled : false}>{buttonText}</PrimaryBtn>
+                <Link to='/checkout'>Continue</Link>
             </Modal.Footer>
         </Modal>
     );

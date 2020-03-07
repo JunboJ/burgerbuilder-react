@@ -4,7 +4,7 @@ import Logo from '../../UI/Logo/Logo';
 import NavBarItem from './NavBarItem/NavBarItem';
 
 const NavBar = props => {
-    const logoBtn = props.showSideBar ? <div><p style={{ fontSize: '1.8rem', textAlign: 'center', color: 'white'}}>&times;</p></div> : <Logo slogan="Build Yourself" />;
+    const logoBtn = props.showSideBar ? <div className={classes.closeBtn_wrapper}><p className={classes.closeBtn}>&times;</p></div> : <Logo slogan="Build Yourself" />;
     return (
         <div className={classes.NavBar}>
             <div onClick={props.logoClicked} className={classes.logoBtnBehaviour}>

@@ -19,24 +19,38 @@
 }
 
 .logoBtnBehaviour {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     z-index: 400;
-}
-
-.sideBarCloseBtn {
-    font-size: 4rem;
-    text-align: center;
+    width: 60px;
+    height: auto;
 }
 
 .LoginBtn {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
     height: 100%;
     width: 50px;
     font-size: 1.2rem;
     margin-right: 0.5rem;
+}
+
+.closeBtn_wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.closeBtn {
+    font-size: 1.8rem;
+    color: whitesmoke;
+    height: auto;
+    margin: 0;
 }
 
 @media only screen and ( max-width: 450px ) {

@@ -1,13 +1,13 @@
 .LogoWrapper {
-    height: 100%;
-    width: auto;
-    padding: 0.6rem 1rem 0.6rem 1rem;
+    height: auto;
+    width: 90%;
+    /* padding: 0.6rem 1rem 0.6rem 1rem; */
     text-align: center;
 }
 
 .LogoIcon {
-    height: 100%;
-    width: auto;
+    height: auto;
+    width: 100%;
 }
 
 .slogan {

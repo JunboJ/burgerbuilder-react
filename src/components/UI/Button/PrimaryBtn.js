@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 const PrimaryBtn = props => {
     
     return (
-        <Button onClick={props.clicked} variant="primary" disabled={props.disabled}>
+        <Button onClick={props.clicked} variant={props.type} disabled={props.disabled}>
             {props.children}
         </Button>
     );

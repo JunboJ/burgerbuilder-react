@@ -20,7 +20,7 @@ class Builder extends Component {
     state = {
         ingredients: null,
         allIngredients: null,
-        totalPrice: 450,
+        totalPrice: 250,
         showModal: false,
         purchasing: false
     }
