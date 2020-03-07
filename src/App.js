@@ -12,10 +12,8 @@ function App() {
 		<BrowserRouter>
 			<div className={classes.App}>
 				<Layout>
-					<Builder />
-					<Route path="/checkout">
-						<Checkout />
-					</Route>
+					<Route path="/" exact component={Builder} />
+					<Route path="/checkout" component={Checkout} />
 				</Layout>
 			</div>
 		</BrowserRouter>

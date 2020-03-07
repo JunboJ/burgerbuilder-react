@@ -5,9 +5,11 @@ import EditIngredientContext from '../../context/editIngredient-context';
 
 
 const Burger = props => {
-    const data = useContext(EditIngredientContext);
-    console.log(data.ingredients);
+    console.log(props);
     
+    const context = useContext(EditIngredientContext);
+    const data = props.fromURL == '/checkout' ? props.ing : context;
+
     let ingredientList = Object.keys(data.ingredients).map(key => {
         return [...Array(data.ingredients[key])].map((_, index) => {
             return <Ingredient key={key + index} type={key} />

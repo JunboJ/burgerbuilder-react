@@ -1,4 +1,23 @@
 .CheckoutSum_wrapper {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.SectionTitle_h2 {
+    padding-left: 2rem;
+}
+
+.BtnSet {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 500px;
+    min-width: 300px;
+    margin: auto;
+}
+
+.BtnSet_wrapper {
+    width: 100%;
+    display: flex;
     justify-content: center;
 }
