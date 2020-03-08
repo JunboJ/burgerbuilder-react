@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 import PrimaryBtn from '../../UI/Button/PrimaryBtn';
 import Spinner from '../../UI/Spinner/Spinner';
@@ -15,6 +14,7 @@ const ModalComponent = props => {
         buttonText = <Spinner ver='white' />;
     }
 
+    
     return (
         <Modal show={props.show} onHide={props.closeBtnClicked} centered >
             <Modal.Header closeButton>
@@ -24,7 +24,7 @@ const ModalComponent = props => {
                 <div><p>{props.body}</p><ul>{props.children}</ul></div>
             </Modal.Body>
             <Modal.Footer>
-                <Link to='/checkout'>Continue</Link>
+                <PrimaryBtn type="primary" clicked={props.primaryClicked} disabled={false} >Continue</PrimaryBtn>
             </Modal.Footer>
         </Modal>
     );

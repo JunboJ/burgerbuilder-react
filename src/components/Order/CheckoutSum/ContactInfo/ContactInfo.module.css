@@ -1,0 +1,11 @@
+.Form_wrapper {
+    min-width: 500px;
+    max-width: 1000px;
+}
+
+.Contact_wrapper {
+    border-left: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    padding-left: 2rem;
+    transition: width ease-in-out;
+}

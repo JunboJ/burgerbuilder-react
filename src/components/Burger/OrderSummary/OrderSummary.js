@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+
 import Modal from '../../UI/Modal/Modal';
 import axios from '../../../axios_orders';
 
@@ -10,38 +12,48 @@ class OrderSummary extends Component {
         loading: false
     };
 
-    checkOutHandler = () => {
+    moudalContinueHandler = () => {
         this.setState({
             loading: true
         });
-        const order = {
-            ingredients: this.props.ingredients,
-            totalPrice: this.props.totalPrice,
-            customer: {
-                name: 'James',
-                address: {
-                    room: '2D',
-                    street: '4 Lorne Street',
-                    postCode: 1010
-                },
-                email: 'junboz598@gmail.com'
-            },
-            deliveryMethod: 'standard'
-        };
+        // const order = {
+        //     ingredients: this.props.ingredients,
+        //     totalPrice: this.props.totalPrice,
+        //     customer: {
+        //         name: 'James',
+        //         address: {
+        //             room: '2D',
+        //             street: '4 Lorne Street',
+        //             postCode: 1010
+        //         },
+        //         email: 'junboz598@gmail.com'
+        //     },
+        //     deliveryMethod: 'standard'
+        // };
 
-        axios.post('/orders.json', order)
-            .then(res => {
-                this.setState({
-                    loading: false,
-                });
-                this.props.closeBtnClicked();
-            })
-            .catch(err => {
-                this.setState({
-                    loading: false,
-                });
-                console.log(err);
-            });
+        // axios.post('/orders.json', order)
+        //     .then(res => {
+        //         this.setState({
+        //             loading: false,
+        //         });
+        //         this.props.closeBtnClicked();
+        //     })
+        //     .catch(err => {
+        //         this.setState({
+        //             loading: false,
+        //         });
+        //         console.log(err);
+        //     });
+        const queryParam = [];
+        Object.keys(this.props.ingredients).map((key, index) => {
+            queryParam.push(encodeURIComponent(key) + '=' + encodeURIComponent(this.props.ingredients[key]));
+        });
+        const queryString = queryParam.join('&');
+
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryString + '&' + `tp=${(this.props.totalPrice / 100).toFixed(2)}`
+        });
     };
 
     shouldComponentUpdate = (prevProps, prevState) => {
@@ -61,6 +73,7 @@ class OrderSummary extends Component {
     };
 
     render() {
+        console.log(this.props);
         const ingredientsSummary = { ...this.props.ingredients };
         const ingredientsListItems = Object.keys(ingredientsSummary).map((key, index) => (
             <li key={key + index}>
@@ -73,7 +86,7 @@ class OrderSummary extends Component {
                 paid={this.state.paid}
                 title={this.state.modalTitle}
                 body={this.state.modalBodyMessage}
-                primaryClicked={this.checkOutHandler}
+                primaryClicked={this.moudalContinueHandler}
                 primaryBtnName='Continue'
                 show={this.props.showModal}
                 primaryDisabled={this.props.paid}
@@ -90,4 +103,4 @@ class OrderSummary extends Component {
         );
     };
 };
-export default OrderSummary;
+export default withRouter(OrderSummary);

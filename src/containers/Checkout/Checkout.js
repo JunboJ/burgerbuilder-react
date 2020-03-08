@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactFragment } from 'react';
+import { Route } from 'react-router-dom';
 
+import ContactInfo from '../../components/Order/CheckoutSum/ContactInfo/ContactInfo';
 import CheckoutSum from '../../components/Order/CheckoutSum/CheckoutSum';
+
+import classes from './Checkout.module.css';
 
 const Checkout = props => {
     console.log(props);
     const [posState, setPosState] = useState({
         checkoutBurger: false
     });
-    let url = props.match ? props.match.url : null;
-
-    // useEffect(() => {
-    //     console.log(url);
-    //     if (url == '/checkout') setPosState({ checkoutBurger: true });
-    // });
 
     return (
-        <CheckoutSum fromURL={url} />
+        <div className={classes.pageWrapper}>
+            <CheckoutSum />
+            <Route path={props.match.path + '/place-order'} component={ContactInfo} />
+        </div>
     );
 }
 export default Checkout;

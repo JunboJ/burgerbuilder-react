@@ -1,15 +1,20 @@
 import React, { useContext } from 'react';
-import classes from './Burger.module.css';
+import { withRouter } from 'react-router-dom';
+
 import Ingredient from './Ingredient/Ingredient';
 import EditIngredientContext from '../../context/editIngredient-context';
 
+import classes from './Burger.module.css';
 
 const Burger = props => {
-    console.log(props);
-    
     const context = useContext(EditIngredientContext);
-    const data = props.fromURL == '/checkout' ? props.ing : context;
-
+    let data = null;
+    if (props.match) {
+        data = props.match.url == '/checkout' ? props.ing : context;
+    } else {
+        data = context;
+    }
+    console.log(data);
     let ingredientList = Object.keys(data.ingredients).map(key => {
         return [...Array(data.ingredients[key])].map((_, index) => {
             return <Ingredient key={key + index} type={key} />
@@ -32,4 +37,4 @@ const Burger = props => {
         </div>
     );
 }
-export default Burger;
+export default withRouter(Burger);
