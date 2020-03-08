@@ -8,6 +8,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import errorHandler from '../../hoc/errorHandler/errorHandler';
 import axios from '../../axios_orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import classes from './Builder.module.css';
 
 const INGREDIENT_PRICE = {
     salad: 50,
@@ -111,7 +112,7 @@ class Builder extends Component {
         }
 
         return (
-            <Aux>
+            <div className={classes.Builder_wrapper}>
                 <OrderSummary closeBtnClicked={this.toggleModal} showModal={this.state.showModal} ingredients={this.state.ingredients} totalPrice={this.state.totalPrice} />
                 {burger}
                 <EditIngredientContext.Provider
@@ -126,7 +127,7 @@ class Builder extends Component {
                         checkOutClicked={this.toggleModal}
                     />
                 </EditIngredientContext.Provider>
-            </Aux>
+            </div>
         );
     }
 };

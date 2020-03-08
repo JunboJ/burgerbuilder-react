@@ -8,18 +8,35 @@
     /* animation: closeSideBar 0.2s forwards; */
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 @keyframes openSideBar {
-    from {margin-left: 0px;}
-    to {margin-left: 250px;}
+    from {
+        margin-left: 0px;
+    }
+    to {
+        margin-left: 250px;
+    }
 }
 
 @keyframes closeSideBar {
-    from {margin-left: 250px;}
-    to {margin-left: 0px;}
+    from {
+        margin-left: 250px;
+    }
+    to {
+        margin-left: 0px;
+    }
 }
 
 .Header {
     width: 100vw;
+    height: 120px;
+    display: 'flex';
+    flex-basis: '100%';
 }
 
 .Content {

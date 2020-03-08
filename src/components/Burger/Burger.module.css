@@ -1,7 +1,7 @@
 .Burger {
     width: 100vw;
     margin: auto;
-    height: 60vw;
+    height: 100%;
     overflow: auto;
     text-align: center;
     font-weight: bold;
@@ -19,7 +19,7 @@
 @media only screen and (min-width: 1000px) and (min-height: 700px) {
     .Burger {
         width: 50vw !important;
-        height: 37.5vw !important;
+        /* height: 32vw !important; */
     }
     .Hint {
         font-size: 1rem;
@@ -29,7 +29,7 @@
 @media only screen and (min-width: 500px) and (min-height: 401px) {
     .Burger {
         width: 80vw;
-        height: 60vw;
+        /* height: 60vw; */
     }
     .Hint {
         font-size: 1.5rem;
@@ -39,7 +39,7 @@
 @media only screen and (min-width: 400px) and (min-height: 500px) {
     .Burger {
         width: 80vw;
-        height: 60vw;
+        /* height: 60vw; */
     }
     .Hint {
         font-size: 1.5rem;

@@ -18,8 +18,8 @@ const Layout = props => {
     const mainClass = showSideBarState.showSideBar ? classes.main_showSideBar : classes.main_hideSideBar;
 
     return (
-        <div className={mainClass}>
-            <header className={classes.Header} style={{ diaplay: 'flex', flexBasis: '100%' }}>
+        <div className={mainClass, classes.main}>
+            <header className={classes.Header}>
                 <SideBar show={showSideBarState.showSideBar} clicked={toggleSideBar}/>
                 <NavBar showSideBar={showSideBarState.showSideBar} logoClicked={toggleSideBar}/>
             </header>
