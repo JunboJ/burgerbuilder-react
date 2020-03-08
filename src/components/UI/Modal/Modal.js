@@ -9,10 +9,10 @@ const ModalComponent = props => {
         console.log('modal updated');
     })
 
-    let buttonText = props.primaryBtnName
-    if (props.loading) {
-        buttonText = <Spinner ver='white' />;
-    }
+    // let buttonText = props.primaryBtnName
+    // if (props.loading) {
+    //     buttonText = <Spinner ver='white' />;
+    // }
 
     
     return (

@@ -13,6 +13,7 @@ const SideBar = props => {
         <Aux>
             <Backdrop show={props.show} clicked={props.clicked} />
             <div className={sideBarClass}>
+                <button type='button' className={classes.closeBtn_wrapper} onClick={props.clicked}><p className={classes.closeBtn}>&times;</p></button>
                 <div className={classes.SideBarLogoWrapper}>
                     <LogoIcon ></LogoIcon>
                 </div>

@@ -1,8 +1,11 @@
 .CheckoutSum_wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     transition: width ease-in-out;
+}
+
+.CheckoutBurger_wrapper {
+    height: 60vh;
 }
 
 .SectionTitle_h2 {

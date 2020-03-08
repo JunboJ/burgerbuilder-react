@@ -34,12 +34,39 @@
     margin: 5px 0;
 }
 
+.closeBtn_wrapper {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 15px;
+    top: 0;
+}
+
+.closeBtn_wrapper:hover {
+    cursor: pointer;
+}
+
+.closeBtn {
+    font-size: 1.8rem;
+    color: whitesmoke;
+    height: auto;
+    margin: 0;
+}
+
 @keyframes openSideBar {
-    from {width: 0px;}
-    to {width: 250px;}
+    from {
+        width: 0px;
+    }
+    to {
+        width: 250px;
+    }
 }
 
 @keyframes closeSideBar {
-    from {width: 250px;}
-    to {width: 0px;}
+    from {
+        width: 250px;
+    }
+    to {
+        width: 0px;
+    }
 }

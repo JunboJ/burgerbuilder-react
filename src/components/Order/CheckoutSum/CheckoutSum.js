@@ -53,18 +53,19 @@ const CheckoutSum = props => {
         //     });
     }
 
-    const parseUrl = () => {
-        const query = new URLSearchParams(props.location.search);
-        return query;
-    }
-
     useEffect(() => {
         let data = {
             ingredients: {},
             totalPrice: null
         };
+
+        const parseUrl = () => {
+            const query = new URLSearchParams(props.location.search);
+            return query;
+        }
+
         const query = parseUrl();
-        console.log(query.entries().next());
+
         query.forEach((index, val) => {
             console.log(index, val);
             val === 'tp' ? data['totalPrice'] = parseInt(index) : data['ingredients'][val] = parseFloat(index);
@@ -75,7 +76,7 @@ const CheckoutSum = props => {
     return (
         <div className={classes.CheckoutSum_wrapper}>
             <h3 className={classes.SectionTitle_h2}>Your Burger: </h3>
-            <div>
+            <div className={classes.CheckoutBurger_wrapper}>
                 <Burger ing={dataState} />
             </div>
             <div className={classes.BtnSet_wrapper}>

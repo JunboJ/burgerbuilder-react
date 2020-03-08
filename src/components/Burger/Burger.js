@@ -10,7 +10,7 @@ const Burger = props => {
     const context = useContext(EditIngredientContext);
     let data = null;
     if (props.match) {
-        data = props.match.url == '/checkout' ? props.ing : context;
+        data = props.match.url === '/checkout' ? props.ing : context;
     } else {
         data = context;
     }

@@ -8,9 +8,6 @@ import classes from './Checkout.module.css';
 
 const Checkout = props => {
     console.log(props);
-    const [posState, setPosState] = useState({
-        checkoutBurger: false
-    });
 
     return (
         <div className={classes.pageWrapper}>
