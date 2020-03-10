@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\public",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\Burger",
+    "\\src\\components\\Burger\\OrderSummary"
+  ],
+  "SelectedNode": "\\src\\components\\Burger\\OrderSummary\\OrderSummary.js",
+  "PreviewInSolutionExplorer": false
+}

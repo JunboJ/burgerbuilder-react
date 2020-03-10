@@ -43,7 +43,7 @@ const Checkout = props => {
         <div className={classes.pageWrapper}>
             <CheckoutSum ing={DATASTATE} />
             <Route path={props.match.path + '/place-order'}
-                render={() => <ContactInfo ing={DATASTATE} />} />
+                render={() => <ContactInfo ing={DATASTATE} {...props} />} />
         </div>
     );
 }

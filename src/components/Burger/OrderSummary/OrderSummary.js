@@ -40,7 +40,7 @@ class OrderSummary extends Component {
         //     })
         //     .catch(err => {
         //         this.setState({
-        //             loading: false,
+        //              loading: false,
         //         });
         //         console.log(err);
         //     });

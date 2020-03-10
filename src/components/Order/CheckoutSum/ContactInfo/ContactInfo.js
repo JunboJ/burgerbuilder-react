@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
+import Spinner from '../../../UI/Spinner/Spinner';
 import axios from '../../../../axios_orders';
 import classes from './ContactInfo.module.css';
 
@@ -20,13 +21,16 @@ const ContactInfo = props => {
     });
 
     const [LoadingState, setLoadingState] = useState({
-        loading: true
+        loading: false
     });
 
     const orderHandler = () => {
+        setLoadingState({
+            loading: true
+        });
         const order = {
-            ingredients: props.ingredients,
-            totalPrice: props.totalPrice,
+            ingredients: props.ing.ingredients,
+            totalPrice: props.ing.totalPrice,
             customer: {
                 name: 'James',
                 address: {
@@ -44,7 +48,7 @@ const ContactInfo = props => {
                 setLoadingState({
                     loading: false,
                 });
-                // props.closeBtnClicked();
+                setTimeout(() => props.history.push('/'), 1000);
             })
             .catch(err => {
                 setLoadingState({
@@ -53,6 +57,8 @@ const ContactInfo = props => {
                 console.log(err);
             });
     }
+
+    let button = LoadingState.loading ? <Spinner /> : 'Submit';
 
     return (
         <div className={classes.Contact_wrapper}>
@@ -99,8 +105,8 @@ const ContactInfo = props => {
                             <Form.Check type="checkbox" label="Remember me next time" />
                         </Form.Group>
                     </Form.Row>
-                    <Button variant="primary" type="button">
-                        Submit
+                    <Button variant="primary" type="button" onClick={orderHandler}>
+                        {button}
                     </Button>
                 </Form>
             </div>

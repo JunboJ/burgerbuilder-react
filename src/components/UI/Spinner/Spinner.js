@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Spinner.module.css';
 
 const Spinner = props => {
-    let spinnerVersion = null;
+    let spinnerVersion = 'white';
     switch (props.ver) {
         case 'white':
             spinnerVersion = classes.Loader_White;
