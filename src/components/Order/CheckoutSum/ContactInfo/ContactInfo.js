@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+
+import axios from '../../../../axios_orders';
 import classes from './ContactInfo.module.css';
 
 const ContactInfo = props => {
+    console.log(props);
+
     const [contactInfoState, setContactInfoState] = useState({
         customer: {
             name: 'James',
@@ -13,7 +17,43 @@ const ContactInfo = props => {
             },
             email: 'junboz598@gmail.com'
         }
-    })
+    });
+
+    const [LoadingState, setLoadingState] = useState({
+        loading: true
+    });
+
+    const orderHandler = () => {
+        const order = {
+            ingredients: props.ingredients,
+            totalPrice: props.totalPrice,
+            customer: {
+                name: 'James',
+                address: {
+                    room: '2D',
+                    street: '4 Lorne Street',
+                    postCode: 1010
+                },
+                email: 'junboz598@gmail.com'
+            },
+            deliveryMethod: 'standard'
+        };
+
+        axios.post('/orders.json', order)
+            .then(res => {
+                setLoadingState({
+                    loading: false,
+                });
+                // props.closeBtnClicked();
+            })
+            .catch(err => {
+                setLoadingState({
+                    loading: false,
+                });
+                console.log(err);
+            });
+    }
+
     return (
         <div className={classes.Contact_wrapper}>
             <h3>Enter your address: </h3>
@@ -59,9 +99,9 @@ const ContactInfo = props => {
                             <Form.Check type="checkbox" label="Remember me next time" />
                         </Form.Group>
                     </Form.Row>
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" type="button">
                         Submit
-                </Button>
+                    </Button>
                 </Form>
             </div>
         </div>
