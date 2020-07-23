@@ -1,20 +1,28 @@
-.SideBarWrapper_show {
+.SidebarWrapper {
     display: flex;
     flex-flow: column;
     align-items: center;
     position: fixed;
     left: 0;
     top: 0;
-    width: 250px;
     height: 100vh;
-    padding: 2rem;
     background-color: #24201e;
+    overflow: hidden;
     z-index: 400;
-    animation: openSideBar 0.2s forwards;
+    transition: width 0.2s ease;
+}
+
+.SideBarWrapper_show {
+    width: 250px;
 }
 
 .SideBarWrapper_hide {
-    display: none;
+    width: 0px !important;
+}
+
+.SidebarContentWrapper {
+    width: 250px;
+    padding: 2rem;
 }
 
 .SideBarLogoWrapper {
@@ -31,7 +39,7 @@
 .SideBarItemsWrapper {
     width: 100%;
     height: auto;
-    margin: 5px 0;
+    margin: 2rem 0;
 }
 
 .closeBtn_wrapper {
@@ -51,22 +59,4 @@
     color: whitesmoke;
     height: auto;
     margin: 0;
-}
-
-@keyframes openSideBar {
-    from {
-        width: 0px;
-    }
-    to {
-        width: 250px;
-    }
-}
-
-@keyframes closeSideBar {
-    from {
-        width: 250px;
-    }
-    to {
-        width: 0px;
-    }
 }

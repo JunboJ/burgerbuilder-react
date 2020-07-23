@@ -24,7 +24,7 @@ const ContactInfo = props => {
         loading: false
     });
 
-    const orderHandler = () => {
+    const orderHandler = (event) => {
         setLoadingState({
             loading: true
         });

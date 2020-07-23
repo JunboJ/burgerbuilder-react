@@ -1,15 +1,14 @@
-.NavBarItem:active {
-    box-shadow: inset 3px 3px 2px #e0844f;
+.NavBarItem .active {
+    border-bottom: 3px solid saddlebrown;
     border-radius: 2px;
     background-color: #f7b263;
     text-decoration: none;
 }
 
-.NavBarItem:hover {
-    box-shadow: inset 3px 3px 2px #e0844f;
+.NavBarItem .anchor:hover {
     border-radius: 2px;
     background-color: #f7b263;
-    text-decoration: none;
+    color: rgb(107, 43, 0);
 }
 
 .NavBarItem {
@@ -18,14 +17,22 @@
     justify-content: center;
     height: inherit;
     width: auto;
-    padding: 5px;
     text-decoration: none;
 }
 
-@media only screen and ( max-width: 450px ) {
+@media only screen and ( max-width: 450px) {
     .NavBarItem {
         height: 3rem;
     }
+}
+
+.anchor {
+    color: rgb(107, 43, 0);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px;
 }
 
 .anchor:hover {

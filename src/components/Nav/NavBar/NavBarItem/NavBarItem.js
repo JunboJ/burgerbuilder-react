@@ -1,12 +1,14 @@
-import React from 'react';
-import classes from './NavBarItem.module.css';
+import React from "react";
+import classes from "./NavBarItem.module.css";
+import { NavLink } from "react-router-dom";
 
 const NavBarItem = props => {
-    
-    return (
-        <div className={classes.NavBarItem}>
-            <a style={{ color: '#6b2b00'}} className={classes.anchor} href={props.link}>{props.children}</a>
-        </div>
-    );
-}
+	return (
+		<div className={classes.NavBarItem}>
+			<NavLink to={props.link} className={classes.anchor} activeClassName={classes.active} exact={props.exact}>
+				<strong> {props.children} </strong>
+			</NavLink>
+		</div>
+	);
+};
 export default NavBarItem;
