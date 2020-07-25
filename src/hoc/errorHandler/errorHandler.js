@@ -32,20 +32,20 @@ const ErrorHandler = (WrappedComponent, axios) => {
         }
 
         render() {
-            return (
-                <Aux>
-                    <WrappedComponent {...this.props}/>
-                    <Modal
-                        title='Something went wrong'
-                        body={null}
-                        primaryClicked={this.dismissModalHandler}
-                        primaryBtnName='Dismiss'
-                        show={this.state.error}
-                        closeBtnClicked={this.dismissModalHandler}
-                    >
-                        {this.state.error}
-                    </Modal>
-                </Aux>
+            return ( <
+                Aux >
+                <
+                WrappedComponent {...this.props }
+                /> <
+                Modal title = 'Something went wrong'
+                body = { null }
+                primaryClicked = { this.dismissModalHandler }
+                primaryBtnName = 'Dismiss'
+                show = { this.state.error }
+                closeBtnClicked = { this.dismissModalHandler } >
+                { this.state.error } <
+                /Modal> <
+                /Aux>
             );
         }
     }

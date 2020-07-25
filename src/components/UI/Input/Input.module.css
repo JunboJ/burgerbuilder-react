@@ -1,0 +1,7 @@
+.valid {
+    border: 2px solid rgb(59, 156, 185)
+}
+
+.invalid {
+    border: 2px solid rgb(237 132 132);
+}

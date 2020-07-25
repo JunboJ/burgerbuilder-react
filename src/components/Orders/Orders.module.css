@@ -1,0 +1,9 @@
+.ordersWrapper {
+    padding: 0 15px;
+}
+
+@media only screen and (max-width: 414px) {
+    .ordersWrapper {
+        font-size: 12px;
+    }
+}

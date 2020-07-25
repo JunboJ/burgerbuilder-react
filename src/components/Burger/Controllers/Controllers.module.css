@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     align-content: center;
+    background: white;
     box-shadow: 2px 2px 4px #c5c5c5;
     border: 1px solid #c5c5c5;
     border-radius: 4px;
@@ -37,8 +38,16 @@
 }
 
 @keyframes Checked {
-    0% {opacity: 0; font-size: 0.1rem;}
-    50% {opacity: 1; font-size: 1.1rem;}
-    100% {opacity: 1; font-size: 1rem;}
+    0% {
+        opacity: 0;
+        font-size: 0.1rem;
+    }
+    50% {
+        opacity: 1;
+        font-size: 1.1rem;
+    }
+    100% {
+        opacity: 1;
+        font-size: 1rem;
+    }
 }
-

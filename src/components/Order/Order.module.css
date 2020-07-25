@@ -1,9 +1,16 @@
 .Order {
-    width: 90%;
+    max-width: 600px;
+    background: white;
     border: 1px solid #ccc;
     border-radius: 1rem;
     box-shadow: 0 2px 3px #ccc;
     padding: 10px;
     margin: 10px auto;
     box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+}
+
+.left_column {
+    flex: 1 0 auto;
 }
