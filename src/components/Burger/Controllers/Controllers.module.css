@@ -1,5 +1,6 @@
 .Controllers {
     width: 90%;
+    max-width: 650px;
     margin: auto;
     padding: 1rem, 3rem;
     display: flex;

@@ -102,19 +102,17 @@ class ContactInfo extends Component {
 
 		if (rule.required) {
 			isValid = value.trim() !== '' && isValid;
-			if (!isValid) return isValid;
 		}
 
 		if (rule.minLength) {
 			isValid = value.trim().length >= rule.minLength && isValid;
-			if (!isValid) return isValid;
 		}
 
 		return isValid;
 	}
 
 	onChangeHandler = (event, key) => {
-		console.log(event.target.value);
+		console.log(event.target.value, key);
 		const updatedForm = {
 			...this.state.form
 		}
@@ -124,7 +122,7 @@ class ContactInfo extends Component {
 		updatedFormControl.value = event.target.value;
 		updatedFormControl.valid = this.validator(updatedFormControl.value, updatedFormControl.validation)
 		updatedForm[key] = updatedFormControl;
-		this.setState(updatedForm);
+		this.setState({ form: updatedForm });
 	};
 
 	orderHandler = event => {
