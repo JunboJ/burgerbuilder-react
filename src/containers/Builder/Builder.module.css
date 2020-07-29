@@ -6,6 +6,20 @@
     margin: auto;
 }
 
+@media screen and (max-width: 414px) {
+    .Builder_wrapper {
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+    .Builder_wrapper {
+        max-width: 80%;
+        flex-direction: row-reverse;
+    }
+}
+
 .Burger {
     max-width: 400px;
+    min-height: 300px;
 }
