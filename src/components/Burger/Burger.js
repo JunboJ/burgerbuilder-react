@@ -6,7 +6,7 @@ import EditIngredientContext from "../../context/editIngredient-context";
 
 import classes from "./Burger.module.css";
 
-const Burger = props => {
+export const Burger = props => {
 	const context = useContext(EditIngredientContext);
 	let data = null;
 	if (props.match) {
@@ -14,7 +14,6 @@ const Burger = props => {
 	} else {
 		data = context;
 	}
-	console.log(data);
 	let ingredientList = Object.keys(data.ingredients)
 		.map(key => {
 			return [...Array(data.ingredients[key])].map((_, index) => {
@@ -26,17 +25,15 @@ const Burger = props => {
 		}, []);
 
 	if (ingredientList.length === 0) {
-		ingredientList = <p className={classes.Hint}>Add ingredients from below!</p>;
-    }
-    
-    let classNames = [classes.Burger];
-    classNames.push(props.className);
+		ingredientList = <p className={classes.Hint}> Add ingredients from below! </p>;
+	}
+
+	let classNames = [classes.Burger];
+	classNames.push(props.className);
 
 	return (
-		<div className={classNames.join(' ')}>
-			<Ingredient type="bread-top" />
-			{ingredientList}
-			<Ingredient type="bread-bottom" />
+		<div className={classNames.join(" ")}>
+			<Ingredient type="bread-top" /> {ingredientList} <Ingredient type="bread-bottom" />
 		</div>
 	);
 };

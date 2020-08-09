@@ -16,11 +16,11 @@ class ContactInfo extends Component {
 				configure: {
 					placeholder: "Enter name",
 				},
-				value: '',
+				value: "",
 				validation: {
-					required: true
+					required: true,
 				},
-				valid: false
+				valid: false,
 			},
 			email: {
 				title: "Email",
@@ -28,11 +28,11 @@ class ContactInfo extends Component {
 				configure: {
 					placeholder: "Email address",
 				},
-				value: '',
+				value: "",
 				validation: {
-					required: true
+					required: true,
 				},
-				valid: false
+				valid: false,
 			},
 			street: {
 				title: "Street",
@@ -40,11 +40,11 @@ class ContactInfo extends Component {
 				configure: {
 					placeholder: "Street number",
 				},
-				value: '',
+				value: "",
 				validation: {
-					required: this.props.deliver == "delivery"
+					required: this.props.deliver === "delivery",
 				},
-				valid: false
+				valid: false,
 			},
 			suburb: {
 				title: "Suburb",
@@ -52,11 +52,11 @@ class ContactInfo extends Component {
 				configure: {
 					placeholder: "(e.g., CBD)",
 				},
-				value: '',
+				value: "",
 				validation: {
-					required: this.props.deliver == "delivery"
+					required: this.props.deliver === "delivery",
 				},
-				valid: false
+				valid: false,
 			},
 			postcode: {
 				title: "Postcode",
@@ -64,24 +64,24 @@ class ContactInfo extends Component {
 				configure: {
 					placeholder: "(e.g., 1010)",
 				},
-				value: '',
+				value: "",
 				validation: {
-					required: this.props.deliver == "delivery",
-					minLength: 4
+					required: this.props.deliver === "delivery",
+					minLength: 4,
 				},
-				valid: false
+				valid: false,
 			},
 			branches: {
 				title: "Shop branches",
 				type: "select",
 				options: ["Albany", "CBD", "Eden Terrace", "Gray Lynn"],
 				configure: {},
-				value: 'CBD',
+				value: "CBD",
 				validation: {
-					required: this.props.deliver != "delivery"
+					required: this.props.deliver !== "delivery",
 				},
-				valid: true
-			}
+				valid: true,
+			},
 			// delivery: {
 			// 	title: "Delivery method",
 			// 	type: "select",
@@ -101,7 +101,7 @@ class ContactInfo extends Component {
 		let isValid = true;
 
 		if (rule.required) {
-			isValid = value.trim() !== '' && isValid;
+			isValid = value.trim() !== "" && isValid;
 		}
 
 		if (rule.minLength) {
@@ -109,18 +109,21 @@ class ContactInfo extends Component {
 		}
 
 		return isValid;
-	}
+	};
 
 	onChangeHandler = (event, key) => {
 		console.log(event.target.value, key);
 		const updatedForm = {
-			...this.state.form
-		}
+			...this.state.form,
+		};
 		const updatedFormControl = {
-			...updatedForm[key]
-		}
+			...updatedForm[key],
+		};
 		updatedFormControl.value = event.target.value;
-		updatedFormControl.valid = this.validator(updatedFormControl.value, updatedFormControl.validation)
+		updatedFormControl.valid = this.validator(
+			updatedFormControl.value,
+			updatedFormControl.validation
+		);
 		updatedForm[key] = updatedFormControl;
 		this.setState({ form: updatedForm });
 	};
@@ -166,41 +169,44 @@ class ContactInfo extends Component {
 
 	cancleHandler = () => {
 		this.props.history.goBack();
-	}
+	};
 
 	render() {
 		let button = this.state.loading ? <Spinner /> : "Submit";
 		return (
 			<div className={classes.Contact_wrapper}>
-				<h3>Enter your address: </h3>
+				<h3> Enter your address: </h3>
 				<div className={classes.Form_wrapper}>
 					<Form>
-						{Object.keys(this.state["form"]).filter((key) => {
-							if (this.state.form[key].validation.required) {
-								return true;
-							}
-							return false;
-						}).map((key, i) => (
-							<Input
-								key={`${key}_${i}`}
-								title={this.state.form[key].title}
-								type={this.state.form[key].type}
-								configure={this.state.form[key].configure}
-								options={
-									this.state.form[key].options
-										? this.state.form[key].options
-										: null
+						{Object.keys(this.state["form"])
+							.filter(key => {
+								if (this.state.form[key].validation.required) {
+									return true;
 								}
-								onChange={event => this.onChangeHandler(event, key)}
-								valid={this.state.form[key].valid}
-							/>
-						))}
+								return false;
+							})
+							.map((key, i) => (
+								<Input
+									key={`${key}_${i}`}
+									title={this.state.form[key].title}
+									type={this.state.form[key].type}
+									configure={this.state.form[key].configure}
+									options={
+										this.state.form[key].options
+											? this.state.form[key].options
+											: null
+									}
+									onChange={event => this.onChangeHandler(event, key)}
+									valid={this.state.form[key].valid}
+								/>
+							))}
 						<Form.Row>
 							<Form.Group controlId="remember me">
 								<Form.Check type="checkbox" label="Remember me next time" />
 							</Form.Group>
 						</Form.Row>
 						<Button variant="primary" type="button" onClick={this.orderHandler}>
+							
 							{button}
 						</Button>
 						<Button variant="light" type="button" onClick={this.cancleHandler}>
