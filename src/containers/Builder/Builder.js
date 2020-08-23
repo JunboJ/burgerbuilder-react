@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions';
 import Burger from "../../components/Burger/Burger";
 import Controllers from "../../components/Burger/Controllers/Controllers";
 import EditIngredientContext from "../../context/editIngredient-context";
@@ -9,40 +10,17 @@ import axios from "../../axios_orders";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import classes from "./Builder.module.css";
 
-const INGREDIENT_PRICE = {
-	salad: 50,
-	cheese: 80,
-	bacon: 40,
-	meat: 100,
-};
 
 class Builder extends Component {
 	state = {
-		ingredients: null,
-		allIngredients: null,
-		totalPrice: 250,
+		// ingredients: null,
+		// allIngredients: null,
+		// totalPrice: 250,
 		showModal: false,
 		purchasing: false,
 	};
 
 	componentDidMount = () => {
-		axios
-			.get("/ingredients.json")
-			.then(res => {
-				const allIgList = {};
-				const igList = {};
-				const data = { ...res.data };
-				Object.keys(data).map(key => {
-					allIgList[key] = data[key];
-					igList[data[key].type] = 0;
-				});
-				console.log(igList);
-				this.setState({
-					ingredients: { ...igList },
-					allIngredients: { ...allIgList },
-				});
-			})
-			.catch(err => (err ? console.log(err) : null));
 	};
 
 	toggleModal = () => {
@@ -53,33 +31,6 @@ class Builder extends Component {
 			this.purchaseCancelHandler();
 		} else {
 			this.purchaseHandler();
-		}
-	};
-
-	addIngredientHandler = type => {
-		let oldState = this.state.ingredients[type];
-		const updatedState = { ...this.state.ingredients };
-		updatedState[type] = oldState + 1;
-		const oldPrice = this.state.totalPrice;
-		const newPrice = oldPrice + INGREDIENT_PRICE[type];
-		console.log(INGREDIENT_PRICE[type]);
-		this.setState({
-			ingredients: updatedState,
-			totalPrice: newPrice,
-		});
-	};
-
-	removeIngredientHandler = type => {
-		let oldState = this.state.ingredients[type];
-		if (oldState > 0) {
-			const updatedState = { ...this.state.ingredients };
-			updatedState[type] = oldState - 1;
-			const oldPrice = this.state.totalPrice;
-			const newPrice = oldPrice - INGREDIENT_PRICE[type];
-			this.setState({
-				ingredients: updatedState,
-				totalPrice: newPrice,
-			});
 		}
 	};
 
@@ -98,11 +49,11 @@ class Builder extends Component {
 	render() {
 		let burger = <Spinner ver="gray" />;
 
-		if (this.state.ingredients) {
+		if (this.props.ingredients) {
 			burger = (
 				<EditIngredientContext.Provider
 					value={{
-						ingredients: this.state.ingredients,
+						ingredients: this.props.ingredients,
 					}}
 				>
 					<Burger className={classes.Burger} />
@@ -115,20 +66,19 @@ class Builder extends Component {
 				<OrderSummary
 					closeBtnClicked={this.toggleModal}
 					showModal={this.state.showModal}
-					ingredients={this.state.ingredients}
-					totalPrice={this.state.totalPrice}
+					ingredients={this.props.ingredients}
+					totalPrice={this.props.totalPrice}
 				/>
 				{burger}
 				<EditIngredientContext.Provider
 					value={{
-						add: this.addIngredientHandler,
-						remove: this.removeIngredientHandler,
+						add: this.props.addIngredientHandler,
+						remove: this.props.removeIngredientHandler,
 					}}
 				>
 					<Controllers
-						allIngredients={this.state.allIngredients}
-						ingredients={this.state.ingredients}
-						price={this.state.totalPrice}
+						ingredients={this.props.ingredients}
+						price={this.props.totalPrice}
 						checkOutClicked={this.toggleModal}
 					/>
 				</EditIngredientContext.Provider>
@@ -137,4 +87,18 @@ class Builder extends Component {
 	}
 }
 
-export default errorHandler(Builder, axios);
+const mapStateToProps = (state) => {
+	return {
+		ingredients: state.orderDetail.ingredients,
+		totalPrice: state.orderDetail.totalPrice
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		addIngredientHandler: (ing) => dispatch({ type: actions.ADD_INGREDIENT, ingredient: ing}),
+		removeIngredientHandler: (ing) => dispatch({ type: actions.REMOVE_INGREDIENT, ingredient: ing})
+	}
+}
+
+export default errorHandler(connect(mapStateToProps, mapDispatchToProps)(Builder), axios);

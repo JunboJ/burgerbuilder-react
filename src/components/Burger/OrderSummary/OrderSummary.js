@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import Modal from '../../UI/Modal/Modal';
-import axios from '../../../axios_orders';
+import Price from '../../Price/Price';
 
 class OrderSummary extends Component {
     state = {
@@ -16,43 +16,9 @@ class OrderSummary extends Component {
         this.setState({
             loading: true
         });
-        // const order = {
-        //     ingredients: this.props.ingredients,
-        //     totalPrice: this.props.totalPrice,
-        //     customer: {
-        //         name: 'James',
-        //         address: {
-        //             room: '2D',
-        //             street: '4 Lorne Street',
-        //             postCode: 1010
-        //         },
-        //         email: 'junboz598@gmail.com'
-        //     },
-        //     deliveryMethod: 'standard'
-        // };
-
-        // axios.post('/orders.json', order)
-        //     .then(res => {
-        //         this.setState({
-        //             loading: false,
-        //         });
-        //         this.props.closeBtnClicked();
-        //     })
-        //     .catch(err => {
-        //         this.setState({
-        //              loading: false,
-        //         });
-        //         console.log(err);
-        //     });
-        const queryParam = [];
-        Object.keys(this.props.ingredients).map((key, index) => {
-            queryParam.push(encodeURIComponent(key) + '=' + encodeURIComponent(this.props.ingredients[key]));
-        });
-        const queryString = queryParam.join('&');
 
         this.props.history.push({
-            pathname: '/checkout',
-            search: '?' + queryString + '&' + `tp=${(this.props.totalPrice / 100).toFixed(2)}`
+            pathname: '/checkout'
         });
     };
 
@@ -96,7 +62,7 @@ class OrderSummary extends Component {
                 {ingredientsListItems}
                 <div>
                     <p>
-                        <b>Total Price:</b> {`${(this.props.totalPrice / 100).toFixed(2)}$`}
+                        <b>Total Price:</b> <Price price={this.props.totalPrice} />
                     </p>
                 </div>
             </Modal >

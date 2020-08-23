@@ -13,11 +13,11 @@ const Controller = props => {
             <label></label>
             <div className="btn-group">
                 <button
-                    onClick={() => { editIngredientContext.remove(props.type) }}
+                    onClick={() => editIngredientContext.remove(props.type)}
                     disabled={props.disable}
                     className="btn btn-light">-</button>
                 <button
-                    onClick={() => { editIngredientContext.add(props.type) }}
+                    onClick={() => editIngredientContext.add(props.type)}
                     className="btn btn-light">+</button>
             </div>
         </li>

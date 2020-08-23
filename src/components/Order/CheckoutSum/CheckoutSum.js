@@ -8,7 +8,6 @@ import Aux from "../../../hoc/Auxiliary/Auxiliary";
 import classes from "./CheckoutSum.module.css";
 
 const CheckoutSum = props => {
-	console.log(props);
 	const cancelHandler = () => {
 		props.history.goBack();
 	};
@@ -20,11 +19,11 @@ const CheckoutSum = props => {
 	return (
 		<div className={classes.CheckoutSum_wrapper}>
 			<div className={classes.CheckoutBurger_wrapper}>
-				<Burger ing={props.ing} />
+				<Burger />
 			</div>
 			<div className={classes.BtnSet_wrapper}>
 				<div className={classes.BtnSet}>
-					{props.location.pathname == "/checkout" ? null : (
+					{props.location.pathname === "/checkout" ? null : (
 						<Aux>
 							<PrimaryBtn type="light" disabled={false} clicked={cancelHandler}>
 								Cancel

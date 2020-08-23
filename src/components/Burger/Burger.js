@@ -1,22 +1,22 @@
-import React, { useContext } from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 import Ingredient from "./Ingredient/Ingredient";
-import EditIngredientContext from "../../context/editIngredient-context";
 
 import classes from "./Burger.module.css";
 
 export const Burger = props => {
-	const context = useContext(EditIngredientContext);
-	let data = null;
-	if (props.match) {
-		data = props.match.url === "/checkout" ? props.ing : context;
-	} else {
-		data = context;
-	}
-	let ingredientList = Object.keys(data.ingredients)
+
+	let data = props.ingredients;
+	// if (props.match) {
+	// 	data = props.match.url === "/checkout" ? props.ingredients : context;
+	// } else {
+	// 	data = context;
+	// }
+	let ingredientList = Object.keys(data)
 		.map(key => {
-			return [...Array(data.ingredients[key])].map((_, index) => {
+			return [...Array(data[key])].map((_, index) => {
 				return <Ingredient key={key + index} type={key} />;
 			});
 		})
@@ -37,4 +37,10 @@ export const Burger = props => {
 		</div>
 	);
 };
-export default withRouter(Burger);
+
+const mapStateToProps = state => {
+	return {
+		ingredients: state.orderDetail.ingredients
+	}
+}
+export default connect(mapStateToProps, null)(withRouter(Burger));

@@ -3,12 +3,13 @@ import classes from './Controllers.module.css';
 import Controller from './Controller/Controller';
 import Spinner from '../../UI/Spinner/Spinner';
 import Aux from '../../../hoc/Auxiliary/Auxiliary';
+import Price from '../../Price/Price';
 
 const Controllers = props => {
     let ulClassNamesArr = ["list-group", classes.controllerGroup];
     let ulClassNames = ulClassNamesArr.join(" ");
 
-    let checkoutBtn = <Spinner ver="gray"/>;
+    let checkoutBtn = <Spinner ver="gray" />;
     let totalIngredientAmount = null;
     if (props.ingredients) {
         totalIngredientAmount = Object.keys(props.ingredients).map((key) => {
@@ -26,16 +27,16 @@ const Controllers = props => {
         );
     }
 
-    let controllers = <Spinner ver='gray'/>;
-    if (props.allIngredients) {
-        controllers = Object.keys(props.allIngredients).map((key, i) => {
-            const allIg = {...props.allIngredients};
+    let controllers = <Spinner ver='gray' />;
+    if (props.ingredients) {
+        controllers = Object.keys(props.ingredients).map((key, i) => {
+            // const ingList = { ...props.ingredients };
             return (
                 <Controller
-                    key={allIg[key].label}
-                    label={allIg[key].label}
-                    type={allIg[key].type}
-                    disable={props.ingredients[allIg[key].type] === 0}
+                    key={key}
+                    label={key}
+                    type={key}
+                    disable={props.ingredients[key] === 0}
                 />
             );
         });
@@ -46,7 +47,7 @@ const Controllers = props => {
             <ul className={ulClassNames}>
                 {controllers}
             </ul>
-            <h4 className={classes.TotalPrice}>Total Price: {((props.price) / 100).toFixed(2)}$</h4>
+            <h4 className={classes.TotalPrice}>Total Price: $<Price price={props.price} /></h4>
             <button
                 disabled={totalIngredientAmount ? totalIngredientAmount === 0 : true}
                 className={`btn btn-warning btn btn-primary ${classes.CheckOut}`}
