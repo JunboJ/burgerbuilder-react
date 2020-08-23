@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - helloworld-james
+name: Build and deploy Node.js app to Azure Web App - BuyABurger
 
 on:
   push:
@@ -13,7 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@master
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@master
+
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Set up Node.js version
       uses: actions/setup-node@v1
@@ -27,9 +32,13 @@ jobs:
         npm run test --if-present
 
     - name: 'Deploy to Azure Web App'
-      uses: azure/webapps-deploy@v1
+      uses: azure/webapps-deploy@v2
       with:
-        app-name: 'helloworld-james'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_009578ba717345729011f31569e79769 }}
-        package: .
+        app-name: 'BuyABurger'
+        # slot-name: 'production'
+        # publish-profile: ${{ secrets.AzureAppService_PublishProfile_009578ba717345729011f31569e79769 }}
+        # package: .
+
+    - name: logout
+      run: |
+        az logout
