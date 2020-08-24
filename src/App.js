@@ -10,7 +10,7 @@ import classes from './App.module.css';
 
 function App() {
 	return (
-		<BrowserRouter>
+		<BrowserRouter basename="../">
 			<div className={classes.App}>
 				<Layout>
 					<Switch>
