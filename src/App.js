@@ -17,7 +17,7 @@ function App() {
 						<Route path="/" exact component={Builder} />
 						<Route path="/orders" component={Orders} />
 						<Route path="/checkout" component={Checkout} />
-						<Redirect from="/burgerbuilder-react" to="/" />
+						<Redirect to="/" />
 						<Route render={() => <h3 style={{ marginLeft: '2rem' }}>Oops! Page not found! <br /><span>:(</span></h3>} />
 					</Switch>
 				</Layout>
