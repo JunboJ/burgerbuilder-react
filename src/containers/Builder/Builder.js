@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import * as actions from '../../store/actions';
+import * as actionTypes from '../../store/actions/actionTypes';
+import * as actionCreator from '../../store/actions/index';
 import Burger from "../../components/Burger/Burger";
 import Controllers from "../../components/Burger/Controllers/Controllers";
 import EditIngredientContext from "../../context/editIngredient-context";
@@ -96,8 +97,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		addIngredientHandler: (ing) => dispatch({ type: actions.ADD_INGREDIENT, ingredient: ing}),
-		removeIngredientHandler: (ing) => dispatch({ type: actions.REMOVE_INGREDIENT, ingredient: ing})
+		addIngredientHandler: (ing) => dispatch(actionCreator.add_ingredient(ing)),
+		removeIngredientHandler: (ing) => dispatch(actionCreator.remove_ingredient(ing))
 	}
 }
 
