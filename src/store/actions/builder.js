@@ -1,9 +1,19 @@
 import * as actionTypes from './actionTypes';
 
-export const add_ingredient = ing => {
+const addIngredient = ing => {
     return {
         type: actionTypes.ADD_INGREDIENT,
         ingredient: ing
+    }
+}
+
+export const add_ingredient = ing => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(
+                addIngredient(ing)
+            );
+        }, 1000);
     }
 };
 

@@ -1,16 +1,17 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "../../axios_orders";
 import errorHandler from "../../hoc/errorHandler/errorHandler";
 
 import Order from "../Order/Order";
 import classes from "./Orders.module.css";
 
-class Orders extends Component {
-	state = {
+const Orders = () => {
+	const [state, setState] = useState({
 		orders: [],
 		loading: true,
-	};
-	componentDidMount() {
+	});
+
+	useEffect(() => {
 		axios
 			.get("/orders.json")
 			.then(res => {
@@ -22,18 +23,17 @@ class Orders extends Component {
 					});
 				}
 				console.log(orders_arr);
-				this.setState({ loading: false, orders: orders_arr });
+				setState({ loading: false, orders: orders_arr });
 			})
 			.catch(err => {
-				this.setState({ loading: false });
+				setState({ loading: false });
 				console.log(err);
 			});
-	}
+	}, []);
 
-	render() {
 		return (
 			<div className={classes.ordersWrapper}>
-				{this.state.orders.map(order => (
+				{state.orders.map(order => (
 					<Order
 						key={order.id}
 						ingredients={order.ingredients}
@@ -43,7 +43,6 @@ class Orders extends Component {
 				))}
 			</div>
 		);
-	}
 }
 
 export default errorHandler(Orders, axios);

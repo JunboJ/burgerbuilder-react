@@ -12,7 +12,7 @@
     }
 }
 
-@media screen and (max-width: 1024px) and (orientation: landscape) {
+@media screen and (max-device-width: 1024px) and (orientation: landscape) {
     .Builder_wrapper {
         max-width: 80%;
         flex-direction: row-reverse;
